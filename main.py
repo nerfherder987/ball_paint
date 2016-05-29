@@ -30,8 +30,6 @@ class MyTest(Widget):
         ud['group'] = g = str(touch.uid)
         ud['color'] = random()
         pointsize = 5
-        print('You touched me!')
-        print(' - location touched: ', touch.x, touch.y)
         with self.canvas:
             Color(ud['color'], 1, 1, mode='hsv', group=g)
             ud['line'] = [Point(points=(touch.x, touch.y), pointsize=8,
@@ -39,9 +37,6 @@ class MyTest(Widget):
         if self.collide_point(*touch.pos):
             self.ball.center = touch.pos
         if touch.is_double_tap:
-            print('Touch is a double tap!')
-            print(' - interval is', touch.double_tap_time)
-            print(' - distance between previous is', touch.double_tap_distance)
             [self.canvas.remove_group(str(i)) for i in range(int(self.lastErase),
             int(g))] # erases marks since last erase
             self.lastErase = g # saves current group to use as start point
@@ -60,7 +55,6 @@ class MyTest(Widget):
 class TestApp(App):
     icon = "./data/dumb_icon.png"
     title = "Draw with a Ball"
-    clearbtn = ObjectProperty(None)
 
     def build(self):
         game = MyTest()
