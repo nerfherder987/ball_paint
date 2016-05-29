@@ -1,0 +1,38 @@
+#: kivy 1.9.1
+
+<MyBall>:
+    size: 80, 80 
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
+            source: 'ball.gif'
+            
+<MyTest>:
+    ball: pong_ball
+    #clearbtn: clear_b
+            
+
+    Label:
+        font_size: 70  
+        center_x: root.width / 4
+        top: root.top - 50
+        text: "Yeah"
+        
+    Label:
+        font_size: 70  
+        center_x: root.width * 3 / 4
+        top: root.top - 50
+        text: "Man"
+        
+    MyBall:
+        id: pong_ball
+        center: self.parent.center
+           
+    #Button:
+    #    id: clear_b
+    #    size: 80,80
+    #    font_size: 20
+    #    text: "Clear"
+    #    center_x: root.width / 14
+    #    on_release: root.clear_canvas()
